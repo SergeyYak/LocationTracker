@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/MessageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewRegistrationURLInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MessageView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/RegistrationURL"
+        android:textColor="@color/yellow"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/EditServerURLText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewRegistrationURLInput"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_border_color"
+        android:ems="10"
+        android:inputType="textUri"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/RequestPermissionBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditServerURLText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/RequestLocationPermission"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+
+    <Button
+        android:id="@+id/DisableBatteryEnergySaving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RequestPermissionBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/DisableBatterySaving"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+
+    <Button
+        android:id="@+id/DisableNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DisableBatteryEnergySaving"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/DisableNotifications"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+
+    <Button
+        android:id="@+id/RegisterDeviceBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DisableNotification"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/RegisterDevice"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+
+    <Button
+        android:id="@+id/StartTrackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RegisterDeviceBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/StartTracking"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+
+    <Button
+        android:id="@+id/ExitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StartTrackBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/Exit"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+</RelativeLayout>

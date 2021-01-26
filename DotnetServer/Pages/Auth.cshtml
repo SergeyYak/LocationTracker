@@ -1,0 +1,36 @@
+﻿@page
+@model CentralServer.Pages.AuthModel
+@{
+    Layout = null;
+}
+
+<!Doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Auth</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/Auth.css" />
+</head>
+<body>
+    <noscript>
+        <p id="JavaScriptDisabled">JavaScript отключён</p>
+    </noscript>
+    @if (Model.ClientAuthorized == false)
+    {
+        <form id="authForm" method="post">
+            <p>Логин:</p>
+            <input name="login" type="text" />
+            <p>Пароль:</p>
+            <input name="password" type="password" />
+            <button type="submit">Войти</button>
+        </form>
+
+        @if (!Model.credentialsCorrect)
+        {<p>Неверный логин или пароль</p>}
+    }
+    else if (Model.ClientAuthorized == true)
+    {<p>Статус: авторизовано</p>}
+</body>
+</html>

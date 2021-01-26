@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Tracker</string>
+    <string name="permissionGranted">"Разрешено"</string>
+    <string name="permissionAlreadyGranted">Уже разрешено</string>
+    <string name="permissionDenied">Запрос отклонён</string>
+    <string name="locationIsNotAllowed">Локация не разрешена</string>
+    <string name="batterySavingAlreadyDisabled">Экономия уже отключена</string>
+    <string name="notificationsAlreadyDisabled">Уведомление уже отключено</string>
+    <string name="notRegisteredStatus">ID не получен</string>
+    <string name="registeringStatus">Получение ID…</string>
+    <string name="registeredStatus">ID получен</string>
+    <string name="incorrectURL">Некорректный URL</string>
+    <string name="trackingStarted">Трекинг начат</string>
+    <string name="RegistrationURL">URL для получения ID:</string>
+    <string name="RequestLocationPermission">Запросить права на геопозицию</string>
+    <string name="DisableBatterySaving">Отключить экономию энергии</string>
+    <string name="DisableNotifications">Отключить уведомление</string>
+    <string name="RegisterDevice">Получить новый ID</string>
+    <string name="StartTracking">Начать трекинг</string>
+    <string name="Exit">Выход</string>
+    <string name="EnterCodeTextView">Введите 0000</string>
+    <string name="SignIn">Войти</string>
+    <string name="DataIncorrect">Код неверен</string>
+</resources>

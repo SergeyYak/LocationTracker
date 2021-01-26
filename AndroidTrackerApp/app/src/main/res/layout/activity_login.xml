@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/PasswordIncorrectView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/EnterCodeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PasswordIncorrectView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/EnterCodeTextView"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/LoginInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EnterCodeTextView"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_border_color"
+        android:ems="3"
+        android:inputType="phone"
+        android:text=""
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/SignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LoginInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/SignIn"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow" />
+</RelativeLayout>

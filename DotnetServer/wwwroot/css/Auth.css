@@ -1,0 +1,31 @@
+﻿#authForm input {
+    display: block;
+}
+
+@media only screen and (max-width: 768px) {
+    p {
+        font-size: 60px;
+    }
+
+    #authForm input{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 720px;
+    }
+
+    #authForm button {
+        font-size: 60px;
+        height: 90px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #authForm input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #authForm button {
+        height: 60px;
+    }
+}

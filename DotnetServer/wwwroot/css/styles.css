@@ -1,0 +1,200 @@
+﻿body {
+    background-color: #383838;
+    min-width: 768px;
+}
+
+button {
+    background-color: rgb(64, 64, 64);
+    border-bottom-color: rgb(33,33,33);
+    border-right-color: rgb(33,33,33);
+    border-top-color: rgb(118,118,118);
+    border-left-color: rgb(118,118,118);
+    color: white;
+    outline: none;
+}
+
+    button:active {
+        border-bottom-color: rgb(118,118,118);
+        border-right-color: rgb(118,118,118);
+        border-top-color: rgb(33,33,33);
+        border-left-color: rgb(33,33,33);
+        color: gray;
+    }
+
+input {
+    background-color: rgb(64, 64, 64);
+    color: white;
+    border-color: rgb(255,250,205);
+    outline: none;
+}
+
+.TimeGeoRequests input, .DistanceGeoRequests input {
+    pointer-events: none;
+    margin: 10px;
+    text-align: center;
+}
+    .TimeGeoRequests input.disabled, .DistanceGeoRequests input.disabled {
+        color: gray;
+    }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: textfield;
+}
+
+p, span {
+    color: rgb(255,250,205);
+    margin: 0px;
+}
+
+.task p {
+    color: white;
+}
+
+.table {
+    display: table;
+}
+
+.onceDiv, .trackDiv, .disableDiv {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+}
+
+hr {
+    border: none;
+    background-color: rgb(33,33,33);
+    height: 1px;
+    width: 600px;
+    margin-left: 0px;
+}
+
+form {
+    margin: 0;
+}
+
+.pointer {
+    position: absolute;
+}
+
+.MoreInfo {
+    display: none;
+}
+
+.changeBtn{
+    margin-left: 20px;
+}
+
+#exitBtn {
+    margin-top: 10px;
+}
+
+#JavaScriptDisabled {
+    color: orange;
+}
+
+.hidden {
+    display: none;
+    width: 0px;
+    height: 0px;
+    border: 0px;
+}
+
+button:disabled,
+button[disabled]{
+    color: gray;
+}
+
+@media only screen and (max-width: 768px) {
+    p, span, button {
+        font-size: 40px;
+    }
+
+    .phone {
+        width: 300px;
+        min-height: 120px;
+    }
+
+    .task {
+        margin: 20px;
+        width: 230px;
+        height: 140px;
+    }
+
+    input {
+        font-size: 60px;
+    }
+
+    .TimeGeoRequests input, .DistanceGeoRequests input {
+        width: 120px;
+    }
+
+    .pointer {
+        margin-left: 350px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .changeBtn {
+        height: 70px;
+    }
+
+    #exitBtn {
+        height: 90px;
+    }
+
+    #JavaScriptDisabled {
+        font-size: 40px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    p, span, button {
+        font-size: 28px;
+    }
+
+    .phone {
+        width: 250px;
+        min-height: 120px;
+    }
+
+    .task {
+        margin: 10px;
+        width: 165px;
+        height: 120px;
+    }
+
+    input {
+        font-size: 28px;
+    }  
+        
+    .TimeGeoRequests input, .DistanceGeoRequests input {
+        width: 70px;
+    }
+
+    .pointer {
+        margin-left: 300px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .changeBtn {
+        height: 40px;
+    }
+
+    #exitBtn {
+        height: 60px;
+    }
+
+    #JavaScriptDisabled {
+        font-size: 28px;
+    }
+}

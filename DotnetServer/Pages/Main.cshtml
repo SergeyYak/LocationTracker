@@ -1,0 +1,149 @@
+﻿@page
+@model CentralServer.Pages.MainModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <noscript>
+        <p id="JavaScriptDisabled">JavaScript отключён</p>
+    </noscript>
+    <iframe name="hiddenFrame" class="hidden"></iframe>
+    @{ if (Model.ClientAuthorized) await GetInfo(); }
+    <form method="post">
+        <button id="exitBtn" name="exitBtn" value="@Boolean.TrueString">Выход</button>
+    </form>
+    <script src="~/js/DropDownBlockScript.js"></script>
+    <script src="~/js/TimeGeoRequestsScript.js"></script>
+    <script src="~/js/DistanceGeoRequestsScript.js"></script>
+</body>
+</html>
+
+@{
+
+    DeviceLocation GetDeviceLocation(string deviceId)
+    {
+        return Model.DevicesLocations
+            .Where(deviceLocation => deviceLocation.DeviceId.Equals(deviceId))
+            .SingleOrDefault() ?? new DeviceLocation();
+    }
+
+    DeviceTask GetDeviceTask(string deviceId)
+    {
+        return Model.DevicesTasks
+            .Where(deviceTask => deviceTask.DeviceId.Equals(deviceId))
+            .SingleOrDefault() ?? new DeviceTask();
+    }
+
+    DevicePing GetDevicePing(string deviceId)
+    {
+        return Model.DevicesPings
+            .Where(devicePing => devicePing.DeviceId.Equals(deviceId))
+            .SingleOrDefault() ?? new DevicePing();
+    }
+
+    async Task GetInfo()
+    {
+        var devices = Model.Devices;
+        if (devices.Count == 0)
+        {<p>Устройств на сервере нет</p>}
+
+        foreach (var device in devices)
+        {
+            var deviceLocation = GetDeviceLocation(device.DeviceId);
+            var deviceTask = GetDeviceTask(device.DeviceId);
+            var devicePing = GetDevicePing(device.DeviceId);
+
+            var hours = TimeSpan.FromMilliseconds(deviceTask.Time).Hours;
+            var minutes = TimeSpan.FromMilliseconds(deviceTask.Time).Minutes;
+            var seconds = TimeSpan.FromMilliseconds(deviceTask.Time).Seconds;
+
+            <div class="BaseInfo">
+                <button class="pointer">▶</button>
+                @if (deviceLocation.LocationUpdatedTimeSTR != null)
+                {
+                    <button class="phone" onclick="window.open('@deviceLocation.Link', '_blank')">@device.DeviceName</button>
+                    <p>@deviceLocation.LocationUpdatedTimeSTR</p>
+                }
+                else
+                {
+                    <button class="phone" disabled>@device.DeviceName</button>
+                    <p>Локации нет</p>
+                }
+            </div>
+            <div class="MoreInfo">
+                @if (devicePing.LastPingRequestTimeSTR != null)
+                {
+                    <p>Последний запрос @devicePing.LastPingRequestTimeSTR назад</p>
+                }
+                else
+                {<p>Запросов не было</p>}
+
+                @if (deviceLocation.Provider != null)
+                {
+                    string provider = $"{deviceLocation.Provider} {deviceLocation.TrackingType}";
+                    <p>Провайдер @provider</p>
+                }
+                else
+                {<p>Провайдер неизвестен</p>}
+
+                <form method="post" action="/TaskReceiver" target="hiddenFrame">
+                    <input type="text" class="hidden" name="deviceId" value="@device.DeviceId" />
+                    <div class="table">
+                        <div class="onceDiv">
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.GPS_Once_Code"><p>GPS</p><p>один раз</p></button>
+                            </div>
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.Mobile_Operator_Once_Code"><p>Вышка</p><p>один раз</p></button>
+                            </div>
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.GetLastKnownLocationCode"><p>Последнее</p><p>известное</p></button>
+                            </div>
+                        </div>
+                        <div class="trackDiv">
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.GPS_Track_Code"><p>GPS</p><p>трек</p></button>
+                            </div>
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.Mobile_Operator_Track_Code"><p>Вышка</p><p>трек</p></button>
+                            </div>
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.Passive_Track_Code"><p>Пассивный</p><p>трек</p></button>
+                            </div>
+                        </div>
+                        <div class="disableDiv">
+                            <div class="cell"></div>
+                            <div class="cell">
+                                <button class="task" type="submit" name="buttonValue" value="@TaskCodes.DisableAllCode"><p>Отключить</p><p>всё</p></button>
+                            </div>
+                            <div class="cell"></div>
+                        </div>
+                    </div>
+                    <div class="TimeGeoRequests">
+                        <p>Минимальное время геозапросов:</p>
+                        <input name="hours" type="number" class="hours disabled" value="@hours" />
+                        <span>:</span>
+                        <input name="minutes" type="number" class="minutes disabled" value="@minutes" />
+                        <span>:</span>
+                        <input name="seconds" type="number" class="seconds disabled" value="@seconds" />
+                        <button type="button" class="changeBtn">Изменить</button>
+                    </div>
+                    <div class="DistanceGeoRequests">
+                        <p>Минимальное расстояние геозапросов(метры):</p>
+                        <input name="distance" type="number" class="meters disabled" value="@deviceTask.Distance" />
+                        <button type="button" class="changeBtn">Изменить</button>
+                    </div>
+                </form>
+            </div>
+            <hr />
+        }
+    }
+}

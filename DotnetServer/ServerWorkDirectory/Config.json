@@ -1,0 +1,10 @@
+{
+  "Login": "admin",
+  "Password": "admin",
+  "AskPasswordEveryTime": false,
+  "RememberAuthDays": 30,
+  "Port": 12833,
+  "HttpsCertificateName": "cert.pfx",
+  "HttpsCertificatePassword": "emb8237",
+  "Link": "https://yandex.ru/maps//?ll={Long}%2C{Lat}&mode=search&sll={Long}%2C{Lat}&text={Lat}%2C{Long}&z=12"
+}
